@@ -1,13 +1,14 @@
 package com.example.appmedidordepassos
 
 import android.content.Context
+import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 
@@ -31,15 +32,28 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     // steps and it has also been given the value of 0 float
     private var previousTotalSteps = 0f
 
+    private var btn = findViewById<Button>(R.id.take_photo)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        btn.setOnClickListener {
+            openCamera()
+        }
 
         loadData()
         resetSteps()
 
         // Adding a context of SENSOR_SERVICE aas Sensor Manager
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+    }
+
+
+    fun openCamera() {
+        //start camera
+        val intent = Intent(this, CameraActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onResume() {
@@ -50,7 +64,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         // This sensor requires permission android.permission.ACTIVITY_RECOGNITION.
         // So don't forget to add the following permission in AndroidManifest.xml present in manifest folder of the app.
         val stepSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
-
 
         if (stepSensor == null) {
             // This will give a toast message to the user if there is no sensor in the device
@@ -118,9 +131,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         // In this function we will retrieve data
         val sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
         val savedNumber = sharedPreferences.getFloat("key1", 0f)
-
-        // Log.d is used for debugging purposes
-        Log.d("com.example.appmedidordepassos.MainActivity", "$savedNumber")
 
         previousTotalSteps = savedNumber
     }
