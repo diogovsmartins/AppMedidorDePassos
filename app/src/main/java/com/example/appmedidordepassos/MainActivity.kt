@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val btn = findViewById<Button>(R.id.take_photo)
+        val btn = findViewById<Button>(R.id.camera_button)
 
         btn.setOnClickListener {
             openCamera()
