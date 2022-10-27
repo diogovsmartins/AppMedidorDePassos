@@ -32,11 +32,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     // steps and it has also been given the value of 0 float
     private var previousTotalSteps = 0f
 
-    private var btn = findViewById<Button>(R.id.take_photo)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val btn = findViewById<Button>(R.id.take_photo)
 
         btn.setOnClickListener {
             openCamera()
