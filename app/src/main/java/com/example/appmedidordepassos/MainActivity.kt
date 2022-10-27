@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
     // Added SensorEventListener the com.example.appmedidordepassos.MainActivity class
@@ -31,11 +32,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     // Creating a variable  which counts previous total
     // steps and it has also been given the value of 0 float
     private var previousTotalSteps = 0f
+    private lateinit var btn :Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val btn = findViewById<Button>(R.id.camera_button)
+        btn = findViewById(R.id.camera_button)
 
         btn.setOnClickListener {
             openCamera()
@@ -89,6 +91,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             // It will show the current steps to the user
             tv_stepsTaken.text = ("$currentSteps")
         }
+        //set button visibility to off if total steps taken less than 20
+        btn.isVisible = tv_stepsTaken.text.toString().toInt() > 20
     }
 
     fun resetSteps() {
@@ -108,7 +112,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
             // This will save the data
             saveData()
-
+            //when total step is reseted to 0, set button visibility to 0
+            btn.isVisible=false
             true
         }
     }
