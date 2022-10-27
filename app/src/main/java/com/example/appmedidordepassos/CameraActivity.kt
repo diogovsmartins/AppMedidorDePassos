@@ -2,7 +2,6 @@ package com.example.appmedidordepassos
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,7 +23,7 @@ class CameraActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_camera)
 
-        var btn=findViewById<Button>(R.id.take_photo_button)
+        val btn=findViewById<Button>(R.id.take_photo_button)
         btn.setOnClickListener {
             val takePictureIntent=Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             photoFile=getPhotoFile(FILE_NAME)
