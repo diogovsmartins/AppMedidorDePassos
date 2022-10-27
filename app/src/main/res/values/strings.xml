@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AppMedidorDePassos</string>
+    <string name="steps">Steps</string>
+    <string name="number_zero">0</string>
+    <string name="camera">Camera</string>
+    <string name="steps_counter_view">steps counter view</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="photo_tittle">Photo Tittle</string>
+    <string name="photo_view">photo view</string>
 </resources>

@@ -17,7 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/camera_screen_tittle">
+        app:layout_constraintTop_toBottomOf="@+id/camera_screen_tittle"
+        android:contentDescription="@string/photo_view">
 
     </ImageView>
 
@@ -26,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Photo Tittle"
+        android:text="@string/photo_tittle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +37,7 @@
         android:id="@+id/take_photo_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Take Photo"
+        android:text="@string/take_photo"
         android:onClick="takePhoto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
